@@ -1,140 +1,89 @@
-<p align="center"><img src="docs/sources/logo_and_name.png" alt="Loki Logo"></p>
+# UniSaaS.UniCORE.Loki
 
-<a href="https://github.com/grafana/loki/actions/workflows/check.yml"><img src="https://github.com/grafana/loki/actions/workflows/check.yml/badge.svg" alt="Check" /></a>
-<a href="https://goreportcard.com/report/github.com/grafana/loki"><img src="https://goreportcard.com/badge/github.com/grafana/loki" alt="Go Report Card" /></a>
-<a href="https://slack.grafana.com/"><img src="https://img.shields.io/badge/join%20slack-%23loki-brightgreen.svg" alt="Slack" /></a>
-[![Fuzzing Status](https://oss-fuzz-build-logs.storage.googleapis.com/badges/loki.svg)](https://bugs.chromium.org/p/oss-fuzz/issues/list?sort=-opened&can=1&q=proj:loki)
+**SCAFFOLD-ANCHOR repository — initial scaffold 2026-06-04.**
 
-# Loki: like Prometheus, but for logs.
+Full scaffolding, upstream-fork integration, and source-code work all pending a fresh dedicated kickoff arc. This initial commit exists to lock the repository's identity, licence position, and place in the UniCORE Sanity Check fleet so the work cannot be forgotten.
 
-Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation system inspired by [Prometheus](https://prometheus.io/).
-It is designed to be very cost effective and easy to operate.
-It does not index the contents of the logs, but rather a set of labels for each log stream.
+Author: **Bryan Fred, Unitek Systems Limited, Bedford, United Kingdom.**
+First commit: **2026-06-04 17:45 UTC.**
 
-Compared to other log aggregation systems, Loki:
+---
 
-- does not do full text indexing on logs. By storing compressed, unstructured logs and only indexing metadata, Loki is simpler to operate and cheaper to run.
-- indexes and groups log streams using the same labels you’re already using with Prometheus, enabling you to seamlessly switch between metrics and logs using the same labels that you’re already using with Prometheus.
-- is an especially good fit for storing [Kubernetes](https://kubernetes.io/) Pod logs. Metadata such as Pod labels is automatically scraped and indexed.
-- has native support in Grafana (needs Grafana v6.0).
+## What this repository is
 
-A Loki-based logging stack consists of 3 components:
+`bryanunitek/UniSaaS.UniCORE.Loki` is the **Loki** family member: SaaS-deployment-shape public gift surface. Documentation today; source code at certification.
 
-- [Alloy](https://github.com/grafana/alloy) is agent, responsible for gathering logs and sending them to Loki.
-- [Loki](https://github.com/grafana/loki) is the main service, responsible for storing logs and processing queries.
-- [Grafana](https://github.com/grafana/grafana) for querying and displaying the logs.
+**Family purpose:** Open-source log aggregation — log storage backend for UniCORE.GVB observability.
 
-**Note that Alloy replaced Promtail in the stack, because Promtail is considered to be feature complete, and future development for logs collection will be in [Grafana Alloy](https://github.com/grafana/alloy).**
+**Deployment shape:** This is the **SaaS-shape** member of the family. It tracks the same upstream codebase as [`UniCORE.Loki`](https://github.com/bryanunitek/UniCORE.Loki) (on-prem shape) but carries SaaS-specific configuration, multi-tenant isolation patterns, and cloud-native deployment artefacts.
 
-Loki is like Prometheus, but for logs: we prefer a multidimensional label-based approach to indexing, and want a single-binary, easy to operate system with no dependencies.
-Loki differs from Prometheus by focusing on logs instead of metrics, and delivering logs via push, instead of pull.
+---
 
-## Getting started
+## Upstream
 
-* [Installing Loki](https://grafana.com/docs/loki/latest/installation/)
-* [Installing Alloy](https://grafana.com/docs/loki/latest/send-data/alloy/)
-* [Getting Started](https://grafana.com/docs/loki/latest/get-started/)
+- **Upstream project:** https://github.com/grafana/loki
+- **Upstream licence:** AGPL-3.0
+- **Our relationship:** Fork-and-extend. Upstream codebase is consumed verbatim under its original licence; our additions sit on top under the same copyleft licence (code) and CC BY 4.0 (docs).
 
-### ⚠️ Helm Chart Migration
-Effective March 16, 2026, the Grafana Loki Helm chart will be forked to a new repository [grafana-community/helm-charts](https://github.com/grafana-community/helm-charts).  The chart in the Loki repository will continue to be maintained for GEL users only.  See [#20705](https://github.com/grafana/loki/issues/20705) for details.
+The merge discipline that governs how this repository absorbs upstream changes is documented in [`UPSTREAM-MERGE-DISCIPLINE.md`](UPSTREAM-MERGE-DISCIPLINE.md).
 
-## Upgrading
+---
 
-* [Upgrading Loki](https://grafana.com/docs/loki/latest/upgrading/)
+## Platforms
 
-## Documentation
+Windows · Linux · macOS · iOS · Android
 
-* [Latest release](https://grafana.com/docs/loki/latest/)
-* [Upcoming release](https://grafana.com/docs/loki/next/), at the tip of the main branch
+---
 
-Commonly used sections:
+## Family — the four-repo pattern
 
-- [API documentation](https://grafana.com/docs/loki/latest/api/) for getting logs into Loki.
-- [Labels](https://grafana.com/docs/loki/latest/getting-started/labels/)
-- [Operations](https://grafana.com/docs/loki/latest/operations/)
-- [Docker Driver Client](https://grafana.com/docs/loki/latest/clients/docker-driver/) is a Docker plugin to send logs directly to Loki from Docker containers.
-- [LogCLI](https://grafana.com/docs/loki/latest/query/logcli/) provides a command-line interface for querying logs.
-- [Loki Canary](https://grafana.com/docs/loki/latest/operations/loki-canary/) monitors your Loki installation for missing logs.
-- [Troubleshooting](https://grafana.com/docs/loki/latest/operations/troubleshooting/) presents help dealing with error messages.
-- [Loki in Grafana](https://grafana.com/docs/loki/latest/operations/grafana/) describes how to set up a Loki datasource in Grafana.
+UniCORE.Loki is published as a **four-repo family**:
 
-## Getting Help
+- `bryanunitek/UniCORE.Loki` — public on-prem-deployment-shape gift surface
+- `bryanunitek/UniSaaS.UniCORE.Loki` — public SaaS-deployment-shape gift surface ← **this repo**
+- `bryanunitek/UniCORE.Loki-Claw` (private) — on-prem-shape working repository
+- `bryanunitek/UniSaaS.UniCORE.Loki-Claw` (private) — SaaS-shape working repository
 
-If you have any questions or feedback regarding Loki:
+---
 
-- Search existing thread in the Grafana Labs community forum for Loki: [https://community.grafana.com](https://community.grafana.com/c/grafana-loki/)
-- Ask a question on the Loki Slack channel. To invite yourself to the Grafana Slack, visit [https://slack.grafana.com/](https://slack.grafana.com/) and join the #loki channel.
-- [File an issue](https://github.com/grafana/loki/issues/new) for bugs, issues and feature suggestions.
-- Send an email to [lokiproject@googlegroups.com](mailto:lokiproject@googlegroups.com), or use the [web interface](https://groups.google.com/forum/#!forum/lokiproject).
-- UI issues should be filed directly in [Grafana](https://github.com/grafana/grafana/issues/new).
+## Status
 
-Your feedback is always welcome.
+**SCAFFOLD-ANCHOR** as of 2026-06-04. See [`STATUS.md`](STATUS.md) for the full status breakdown.
 
-## Further Reading
+---
 
-- The original [design doc](https://docs.google.com/document/d/11tjK_lvp1-SVsFZjgOTr1vV3-q6vBAsZYIQ5ZeYBkyM/view) for Loki is a good source for discussion of the motivation and design decisions.
-- Callum Styan's March 2019 DevOpsDays Vancouver talk "[Grafana Loki: Log Aggregation for Incident Investigations][devopsdays19-talk]".
-- Grafana Labs blog post "[How We Designed Loki to Work Easily Both as Microservices and as Monoliths][architecture-blog]".
-- Tom Wilkie's early-2019 CNCF Paris/FOSDEM talk "[Grafana Loki: like Prometheus, but for logs][fosdem19-talk]" ([slides][fosdem19-slides], [video][fosdem19-video]).
-- David Kaltschmidt's KubeCon 2018 talk "[On the OSS Path to Full Observability with Grafana][kccna18-event]" ([slides][kccna18-slides], [video][kccna18-video]) on how Loki fits into a cloud-native environment.
-- Goutham Veeramachaneni's blog post "[Loki: Prometheus-inspired, open source logging for cloud natives](https://grafana.com/blog/2018/12/12/loki-prometheus-inspired-open-source-logging-for-cloud-natives/)" on details of the Loki architecture.
-- David Kaltschmidt's blog post "[Closer look at Grafana's user interface for Loki](https://grafana.com/blog/2019/01/02/closer-look-at-grafanas-user-interface-for-loki/)" on the ideas that went into the logging user interface.
+## Files in this scaffold commit
 
-[devopsdays19-talk]: https://grafana.com/blog/2019/05/06/how-loki-correlates-metrics-and-logs-and-saves-you-money/
-[architecture-blog]: https://grafana.com/blog/2019/04/15/how-we-designed-loki-to-work-easily-both-as-microservices-and-as-monoliths/
-[fosdem19-talk]: https://fosdem.org/2019/schedule/event/loki_prometheus_for_logs/
-[fosdem19-slides]: https://speakerdeck.com/grafana/grafana-loki-like-prometheus-but-for-logs
-[fosdem19-video]: https://mirror.as35701.net/video.fosdem.org/2019/UB2.252A/loki_prometheus_for_logs.mp4
-[kccna18-event]: https://kccna18.sched.com/event/GrXC/on-the-oss-path-to-full-observability-with-grafana-david-kaltschmidt-grafana-labs
-[kccna18-slides]: https://speakerdeck.com/davkal/on-the-path-to-full-observability-with-oss-and-launch-of-loki
-[kccna18-video]: https://www.youtube.com/watch?v=U7C5SpRtK74&list=PLj6h78yzYM2PZf9eA7bhWnIh_mK1vyOfU&index=346
+- [`README.md`](README.md) — this file
+- [`LICENSE.md`](LICENSE.md) — UniCORE additions licence
+- [`STATUS.md`](STATUS.md) — scaffold-anchor status
+- [`UPSTREAM-MERGE-DISCIPLINE.md`](UPSTREAM-MERGE-DISCIPLINE.md) — canonical merge discipline
+- [`AI-AUTHORSHIP.md`](AI-AUTHORSHIP.md) — AI authorship disclosure
 
-## Contributing
+---
 
-Refer to [CONTRIBUTING.md](CONTRIBUTING.md)
+## Related repositories — UniCORE programme
 
-### Building from source
+**Foundation triad (gift, public, CC BY 4.0):**
+- [`UniVERSE`](https://github.com/bryanunitek/UniVERSE) — programme
+- [`TrueAI`](https://github.com/bryanunitek/TrueAI) — Foundation (Nine Invariants)
+- [`UniCORE-AI`](https://github.com/bryanunitek/UniCORE-AI) — reference architecture (12 Levels)
 
-Loki can be run in a single host, no-dependencies mode using the following commands.
+**Implementation reference (deployment-shape pair):**
+- [`UniCORE`](https://github.com/bryanunitek/UniCORE) — on-prem-shape
+- [`UniSaaS.UniCORE`](https://github.com/bryanunitek/UniSaaS.UniCORE) — SaaS-shape
 
-You need an up-to-date version of [Go](https://go.dev/), we recommend using the version found in our [Makefile](https://github.com/grafana/loki/blob/main/Makefile)
+**Substrate-services layer (deployment-shape pair):**
+- [`UniCORE.GVB`](https://github.com/bryanunitek/UniCORE.GVB) — on-prem-shape
+- [`UniSaaS.UniCORE.GVB`](https://github.com/bryanunitek/UniSaaS.UniCORE.GVB) — SaaS-shape
 
-```bash
-# Checkout source code
-$ git clone https://github.com/grafana/loki
-$ cd loki
+---
 
-# Build binary
-$ go build ./cmd/loki
+## Contact
 
-# Run executable
-$ ./loki -config.file=./cmd/loki/loki-local-config.yaml
-```
+- **Public discussion:** [GitHub Discussions](https://github.com/bryanunitek/UniSaaS.UniCORE.Loki/discussions)
+- **Private contact / connection request:** [LinkedIn — Bryan Fred](https://www.linkedin.com/in/bryan-fred-02209753/)
 
-Alternatively, on Unix systems you can use `make` to build the binary, which adds additional arguments to the `go build` command.
+---
 
-```bash
-# Build binary
-$ make loki
-
-# Run executable
-$ ./cmd/loki/loki -config.file=./cmd/loki/loki-local-config.yaml
-```
-
-To run multiple Loki tenants locally, ensure that auth_enabled is set to true and provide a runtime config with any tenant specific overrides.
-```bash
-# Build binary
-$ make loki
-
-# Run executable
-./loki -config.file=./cmd/loki/loki-local-multi-tenant-config.yaml -runtime-config.file=./cmd/loki/loki-overrides.yaml
-```
-
-## Adopters
-
-Please see [ADOPTERS.md](ADOPTERS.md) for some of the organizations using Loki today.
-If you would like to add your organization to the list, please open a PR to add it to the list.
-
-## License
-
-Grafana Loki is distributed under [AGPL-3.0-only](LICENSE). For Apache-2.0 exceptions, see [LICENSING.md](LICENSING.md).
+*Author: Bryan Fred, Unitek Systems Limited, Bedford, United Kingdom. Public. Given, not sold. Irrevocable.*
