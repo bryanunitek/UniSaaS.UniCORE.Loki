@@ -91,7 +91,7 @@ Your feedback is always welcome.
 
 ## Contributing
 
-Refer to [CONTRIBUTING.md](CONTRIBUTING.md)
+Refer to [CONTRIBUTING.md](https://git.unitek-systems.com/UniCORE/UniSaaS.UniCORE.Loki/src/branch/main/CONTRIBUTING.md) (mirror: [GitHub](https://github.com/bryanunitek/UniSaaS.UniCORE.Loki/blob/main/CONTRIBUTING.md))
 
 ### Building from source
 
@@ -132,9 +132,9 @@ $ make loki
 
 ## Adopters
 
-Please see [ADOPTERS.md](ADOPTERS.md) for some of the organizations using Loki today.
+Please see [ADOPTERS.md](https://git.unitek-systems.com/UniCORE/UniSaaS.UniCORE.Loki/src/branch/main/ADOPTERS.md) (mirror: [GitHub](https://github.com/bryanunitek/UniSaaS.UniCORE.Loki/blob/main/ADOPTERS.md)) for some of the organizations using Loki today.
 If you would like to add your organization to the list, please open a PR to add it to the list.
 
 ## License
 
-Grafana Loki is distributed under [AGPL-3.0-only](LICENSE). For Apache-2.0 exceptions, see [LICENSING.md](LICENSING.md).
+Grafana Loki is distributed under [AGPL-3.0-only](LICENSE). For Apache-2.0 exceptions, see [LICENSING.md](https://git.unitek-systems.com/UniCORE/UniSaaS.UniCORE.Loki/src/branch/main/LICENSING.md) (mirror: [GitHub](https://github.com/bryanunitek/UniSaaS.UniCORE.Loki/blob/main/LICENSING.md)).
